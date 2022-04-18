@@ -11,7 +11,7 @@ class BurgService {
 
   async deleteBurg(burgToDeleteId) {
     const burgToDelete = await this.getBurgById(burgToDeleteId)
-    FakeDB.burgs = FakeDB.burgs.filter(b => b.id !== burgToDeleteId)
+    FakeDB.burgs = FakeDB.burgs.filter((b) => b.id !== burgToDeleteId)
     return burgToDelete
   }
 
@@ -21,7 +21,7 @@ class BurgService {
   }
 
   async getBurgById(burgId) {
-    const foundBurg = FakeDB.burgs.find(b => b.id === burgId)
+    const foundBurg = FakeDB.burgs.find((b) => b.id === burgId)
     if (!foundBurg) {
       throw new BadRequest('unable to get the burg')
     }
