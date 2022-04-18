@@ -1,4 +1,3 @@
-import { generateId } from '../../client/app/Utils/generateId'
 import { FakeDB } from '../db/FakeDB'
 import { BadRequest } from '../utils/Errors'
 
@@ -10,8 +9,13 @@ class BurgService {
     return originalBurg
   }
 
+  async deleteBurg(burgToDeleteId) {
+    const burgToDelete = await this.getBurgById(burgToDeleteId)
+    FakeDB.burgs = FakeDB.burgs.filter(b => b.id !== burgToDeleteId)
+    return burgToDelete
+  }
+
   async createBurg(burgToCreate) {
-    burgToCreate.id = generateId()
     FakeDB.burgs.push(burgToCreate)
     return FakeDB.burgs
   }

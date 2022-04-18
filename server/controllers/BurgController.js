@@ -9,6 +9,7 @@ export class BurgController extends BaseController {
       .get('/:id', this.getBurgById)
       .post('', this.createBurg)
       .put('/:id', this.editBurg)
+      .delete('/:id', this.deleteBurg)
   }
 
   async getAllBurgs(req, res, next) {
@@ -35,6 +36,16 @@ export class BurgController extends BaseController {
       const burgToCreate = req.body
       const createdBurg = await burgService.createBurg(burgToCreate)
       res.send(createdBurg)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteBurg(req, res, next) {
+    try {
+      const burgToDeleteId = req.params.id
+      const defeatedBurg = await burgService.deleteBurg(burgToDeleteId)
+      res.send(defeatedBurg)
     } catch (error) {
       next(error)
     }

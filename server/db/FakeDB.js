@@ -1,21 +1,20 @@
-import { generateId } from '../../client/app/Utils/generateId.js'
 
 export const FakeDB = {
   burgs: [
     {
       name: 'Classic',
       extras: 'none',
-      id: generateId()
+      id: '1'
     },
     {
       name: 'Extra',
       extras: 'Bacon',
-      id: generateId()
+      id: '2'
     },
     {
       name: 'Hedgehog',
       extras: 'Sonic',
-      id: generateId()
+      id: '3'
     }
   ]
 }
